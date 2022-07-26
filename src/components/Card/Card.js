@@ -1,8 +1,8 @@
 import React from 'react'
 import "./Card.css"
 
-export const Card = () => {
+export const Card = (props) => {
   return (
-    <div className='cart-info' >Card  <span className='cart-number'>0</span></div>
+    <div><button type="button" className="cart-show-button"onClick={props.oncartclick}>card</button> <span className='cart-number'>0</span></div>
   )
 }
