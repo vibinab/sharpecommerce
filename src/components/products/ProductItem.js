@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./ProductItem.css"
+import CartContext from '../../store/cart-context'
 
 export const ProductItem = (props) => {
+  const cartcntx=useContext(CartContext)
+  
+
+  const additemtocart =() => {
+
+    
+  cartcntx.addItem(props)
+// console.log(props)
+  }
   return (
     <>
     <div className='product-item'>
@@ -10,7 +20,7 @@ export const ProductItem = (props) => {
 
      <div className='product-item-details'>
      <p>${props.price}</p>
-     <button className='add-to-cart'>Add to cart</button>
+     <button className='add-to-cart' onClick={additemtocart}>Add to cart</button>
      </div>
    
 

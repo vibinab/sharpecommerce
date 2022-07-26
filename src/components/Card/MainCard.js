@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./MainCard.css"
 import { MainCarditem } from './MainCarditem'
 import { Modal } from '../UI/Modal'
+import CartContext from '../../store/cart-context'
+
 const cartElements = [
 
     {
@@ -45,8 +47,15 @@ const cartElements = [
     
 
 export const MainCard = (props) => {
+
+    const cartcintx= useContext(CartContext)
+
+    const numberofcarts=cartcintx.items.reduce((cur,item)=> {
+        return cur+item.price
+    },0)
   return (
     <>
+    <h1 style={{textAlign:"center"}}>Cart</h1>
     <div className='closemodal-content'>
         <button className='closemodal' onClick={props.onclose}>x</button>
     </div>
@@ -63,10 +72,13 @@ export const MainCard = (props) => {
             <hr style={{width:'100%'}}></hr>
             </th>
         </tr>
+        <p>total:{numberofcarts}</p>
+
+
         
     </table>
     {
-        cartElements.map((element)=> {
+        cartcintx.items.map((element)=> {
             return (
                 
                 <tr>

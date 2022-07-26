@@ -66,8 +66,9 @@ export const ProductLists = () => {
 
                 <>
              
-              <div className='product-list'>
+              <div   className='product-list'>
                <ProductItem 
+                key={product.title}
                title={product.title} 
                price={product.price}
                image={product.imageUrl}
